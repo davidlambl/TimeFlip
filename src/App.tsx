@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import TimeFlipCalendar from './components/Calendar';
+import TimeFlipCalendar from './components/TimeFlipCalendar';
 import EventDetails from './components/EventDetails';
-import 'react-calendar/dist/Calendar.css';
 import './App.css';
 
 const App: React.FC = () => {

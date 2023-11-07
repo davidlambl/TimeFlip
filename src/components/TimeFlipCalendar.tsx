@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-import { Link } from 'react-router-dom';
+import EventDetails from './EventDetails';
+import './TimeFlipCalendar.css';
+import 'react-calendar/dist/Calendar.css';
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -13,15 +15,14 @@ const TimeFlipCalendar: React.FC = () => {
 	};
 
 	return (
-		<div>
-			<h1>Event Calendar</h1>
-			<Calendar onChange={handleDateChange} value={selectedDate} />
-			{selectedDate && (
-				<Link to={`/event/${selectedDate.toISOString().split('T')[0]}`}>
-					View Details
-				</Link>
-			)}
-		</div>
+		<>
+			<div className="upper-half">
+				<Calendar onChange={handleDateChange} value={selectedDate} />
+			</div>
+			<div className="lower-half">
+				<EventDetails selectedDate={selectedDate} />
+			</div>
+		</>
 	);
 };
 

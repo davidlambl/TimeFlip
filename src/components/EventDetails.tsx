@@ -20,13 +20,13 @@ const EventDetails: React.FC<EventDetailsProps> = (props) => {
 	});
 
 	if (dateDetailsQuery.isLoading) {
-		return <div>...</div>;
+		return <h1>...</h1>;
 	}
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	const data = dateDetailsQuery.data;
 	return (
 		<div>
-			<p>{props.selectedDate?.toDateString() ?? date}</p>
+			<h1>{props.selectedDate?.toDateString() ?? date}</h1>
 			<pre>{JSON.stringify(data)}</pre>
 			<pre
 				style={{

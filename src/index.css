@@ -1,11 +1,32 @@
+/* Define CSS variables for easy theme customization */
 :root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	font-weight: 400;
+	--font-family-base: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	--font-size-base: 14px;
+	--line-height-base: 1.5;
+	--font-weight-normal: 400;
+	--color-text: #333; /* Default text color */
+	--color-background: #fff; /* Default background color */
+	--box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.1);
+	--border-radius-base: 4px;
+}
 
-	color: rgba(255, 255, 255, 0.87);
-	background-color: #242424;
+/* Apply a natural box layout model to all elements */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 
+/* Reset and set global styles */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-family-base);
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-base);
+	font-weight: var(--font-weight-normal);
+	color: var(--color-text);
+	background-color: var(--color-background);
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -13,24 +34,30 @@
 	-webkit-text-size-adjust: 100%;
 }
 
+/* Improve form elements' default styling */
+input,
+button,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+/* Set basic styles for commonly used HTML elements */
 a {
-	font-weight: 500;
-	color: #646cff;
-	text-decoration: inherit;
-}
-a:hover {
-	color: #535bf2;
+	color: inherit; /* Makes links use the current text color */
+	text-decoration: none; /* Removes underline from links; customize as needed */
 }
 
-body {
-	margin: 0;
-	display: flex;
-	place-items: center;
-	min-width: 320px;
-	min-height: 100vh;
-}
-
-h1 {
-	font-size: 3.2em;
-	line-height: 1.1;
+/* Utility classes for common adjustments */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }

@@ -1,6 +1,8 @@
+/* App.css: This file is often used for styling specific to the top-level App component. 
+It can include styles that are specific to the overall layout or structure of your application, such as header, footer, and main content area styling. 
+Importing this file into App.js ensures that these styles are applied to the layout defined in the App component. */
+
 #root {
-	max-width: 1280px;
-	margin: 0 auto;
-	padding: 2rem;
-	text-align: center;
+	max-width: fit-content;
+	margin-inline: auto;
 }

@@ -2,32 +2,35 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { DailyReport } from '../interfaces/timeTrackingModel';
+import { fetchData } from '../services/apiService';
 
 interface EventDetailsProps {
 	selectedDate?: Date | null;
 }
 
-async function fetchApiStatus() {
-	const res = await fetch(`/report/daily`);
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
-	return await res.json();
+async function fetchDailyReport(day: string) {
+	return await fetchData<DailyReport>(
+		`https://newapi.timeflip.io/report/daily?timeOrPaymentSorting=true&beginDateStr=${day}&endDateStr=${day}`
+	);
 }
 
 const EventDetails: React.FC<EventDetailsProps> = (props) => {
 	const { date } = useParams<{ date: string }>();
+	const day: string =
+		props.selectedDate?.toISOString()?.slice(0, 10) ?? date ?? '2024-01-01';
 	const dateDetailsQuery = useQuery({
-		queryKey: [props.selectedDate?.toDateString()],
-		queryFn: () => fetchApiStatus(),
+		queryKey: [day],
+		queryFn: () => fetchDailyReport(day),
 	});
 
 	if (dateDetailsQuery.isLoading) {
 		return <h1>...</h1>;
 	}
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const data: DailyReport = dateDetailsQuery.data;
+
+	const data: DailyReport | undefined = dateDetailsQuery.data;
 	return (
 		<div>
-			<h1>Tasks for {props.selectedDate?.toDateString() ?? date}</h1>
+			<h1>Tasks for {day}</h1>
 			{data ? (
 				<p>
 					{data?.weeks[0].days[3].tasksInfo.map((taskInfo, index: number) => (

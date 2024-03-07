@@ -1,15 +1,15 @@
-import { getToken } from './authService';
+// import { getToken } from './authService';
 
 export const fetchData = async <T>(url: string): Promise<T> => {
-	const token: string | null = await getToken();
-	if (!token) throw new Error('No token found');
+	// const token: string | null = await getToken();
+	// if (!token) throw new Error('No token found');
 
 	try {
 		const response = await fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
+				// Authorization: `Bearer ${token}`,
 			},
 		});
 		if (!response.ok) throw new Error('Network response was not ok');

@@ -3,20 +3,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
-async function enableMocking() {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  if (process.env.NODE_ENV !== 'development') {
-    return;
+async function startServiceWorkerInDev() {
+  if (process.env.NODE_ENV === 'development') {
+    const { worker } = await import('./mocks/browser');
+    return worker.start();
   }
-
-  const { worker } = await import('./mocks/browser');
-
-  // `worker.start()` returns a Promise that resolves
-  // once the Service Worker is up and ready to intercept requests.
-  return worker.start();
 }
 
-void enableMocking().then(() => {
+void startServiceWorkerInDev().then(() => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
       <App />

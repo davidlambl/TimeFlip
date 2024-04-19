@@ -1,3 +1,4 @@
+import { extendTheme } from '@chakra-ui/react'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ChakraProvider } from "@chakra-ui/react"
@@ -11,10 +12,21 @@ async function startServiceWorkerInDev() {
   }
 }
 
+const theme = extendTheme({
+  styles: {
+    global: {
+      "html, body": {
+        backgroundColor: "#5a96a8;",
+        color: "#202224;",
+      },
+    },
+  },
+});
+
 void startServiceWorkerInDev().then(() => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <App />
       </ChakraProvider>
     </React.StrictMode>

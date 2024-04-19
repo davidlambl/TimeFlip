@@ -43,7 +43,7 @@ const TimeFlipCalendar: React.FC = () => {
 
             <ModalFooter>
               <Button colorScheme='blue' mr={3} onClick={onClose}>
-                                Save
+                Save
               </Button>
               <Button onClick={onClose}>Cancel</Button>
             </ModalFooter>

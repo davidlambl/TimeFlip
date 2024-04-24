@@ -1,0 +1,23 @@
+meta {
+  name: addToken
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/profile/add-token
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "essebf4": "<string>",
+    "ullamco_8a": "<string>",
+    "sit__3": "<string>"
+  }
+}

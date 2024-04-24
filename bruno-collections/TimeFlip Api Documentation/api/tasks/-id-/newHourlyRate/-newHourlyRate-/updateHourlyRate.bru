@@ -1,0 +1,15 @@
+meta {
+  name: updateHourlyRate
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/api/tasks/:id/newHourlyRate/:newHourlyRate
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

@@ -1,0 +1,15 @@
+meta {
+  name: file
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/files/file?name=<string>
+  body: none
+  auth: none
+}
+
+query {
+  name: <string>
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Get Date Data
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://newapi.timeflip.io/report/daily?timeOrPaymentSorting=true&beginDateStr=2024-04-16&endDateStr=2024-04-16
+  body: json
+  auth: bearer
+}
+
+query {
+  timeOrPaymentSorting: true
+  beginDateStr: 2024-04-16
+  endDateStr: 2024-04-16
+}
+
+auth:bearer {
+  token: {{AuthToken}}
+}

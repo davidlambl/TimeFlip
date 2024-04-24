@@ -1,0 +1,20 @@
+meta {
+  name: tasksByUser
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/tasks/byUser?authenticated=<boolean>&authorities[0].authority=<string>
+  body: none
+  auth: none
+}
+
+query {
+  authenticated: <boolean>
+  authorities[0].authority: <string>
+}
+
+headers {
+  Accept: */*
+}

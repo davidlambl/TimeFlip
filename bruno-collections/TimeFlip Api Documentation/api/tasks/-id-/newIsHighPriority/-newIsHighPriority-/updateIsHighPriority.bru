@@ -1,0 +1,15 @@
+meta {
+  name: updateIsHighPriority
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/api/tasks/:id/newIsHighPriority/:newIsHighPriority
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

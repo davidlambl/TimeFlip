@@ -1,0 +1,15 @@
+meta {
+  name: updateDescription
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/api/tasks/:id/newDescription/:newDescription
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

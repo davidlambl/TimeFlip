@@ -1,0 +1,24 @@
+meta {
+  name: handle
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/actuator/health/:component
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "essebf4": "<string>",
+    "ullamco_8a": "<string>",
+    "sit__3": "<string>"
+  }
+}

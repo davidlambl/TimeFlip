@@ -1,0 +1,31 @@
+meta {
+  name: tasksByPeriod
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/tasks/byPeriod?authenticated=<boolean>&authorities[0].authority=<string>&beginDate=<dateTime>&beginDateStr=<string>&currencyId=<long>&endDate=<dateTime>&endDateStr=<string>&tags=<string>&tags=<string>&taskIds=<long>&taskIds=<long>&timeOrPaymentSorting=<boolean>&userId=<long>
+  body: none
+  auth: none
+}
+
+query {
+  authenticated: <boolean>
+  authorities[0].authority: <string>
+  beginDate: <dateTime>
+  beginDateStr: <string>
+  currencyId: <long>
+  endDate: <dateTime>
+  endDateStr: <string>
+  tags: <string>
+  tags: <string>
+  taskIds: <long>
+  taskIds: <long>
+  timeOrPaymentSorting: <boolean>
+  userId: <long>
+}
+
+headers {
+  Accept: */*
+}

@@ -1,0 +1,20 @@
+meta {
+  name: calibrate
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/profile/calibrate
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: */*
+}
+
+body:json {
+  {}
+}

@@ -1,0 +1,15 @@
+meta {
+  name: ics
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/ics/:uuid
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

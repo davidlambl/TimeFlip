@@ -1,0 +1,20 @@
+meta {
+  name: read
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/settings?authenticated=<boolean>&authorities[0].authority=<string>
+  body: none
+  auth: none
+}
+
+query {
+  authenticated: <boolean>
+  authorities[0].authority: <string>
+}
+
+headers {
+  Accept: */*
+}

@@ -1,0 +1,15 @@
+meta {
+  name: byVersion
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/firmware/:version/download
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

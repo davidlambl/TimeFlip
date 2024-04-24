@@ -1,0 +1,15 @@
+meta {
+  name: updateCurrencyId
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/api/tasks/:id/newCurrencyId/:newCurrencyId
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

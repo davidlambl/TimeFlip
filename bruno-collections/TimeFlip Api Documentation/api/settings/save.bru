@@ -1,0 +1,37 @@
+meta {
+  name: save
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/settings?authenticated=<boolean>&authorities[0].authority=<string>
+  body: json
+  auth: none
+}
+
+query {
+  authenticated: <boolean>
+  authorities[0].authority: <string>
+}
+
+headers {
+  Content-Type: application/json
+  Accept: */*
+}
+
+body:json {
+  {
+    "appVersion": "<string>",
+    "autoPause": "<boolean>",
+    "autoPauseDelay": "<integer>",
+    "blinkInterval": "<boolean>",
+    "blinkIntervalValue": "<integer>",
+    "brightness": "<boolean>",
+    "brightnessLevel": "<integer>",
+    "firmwareVersion": "<string>",
+    "id": "<long>",
+    "timeflipName": "<string>",
+    "userId": "<long>"
+  }
+}

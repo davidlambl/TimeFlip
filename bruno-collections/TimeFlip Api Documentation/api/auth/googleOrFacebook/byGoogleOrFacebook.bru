@@ -1,0 +1,24 @@
+meta {
+  name: byGoogleOrFacebook
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/auth/googleOrFacebook
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: */*
+}
+
+body:json {
+  {
+    "essebf4": "<string>",
+    "ullamco_8a": "<string>",
+    "sit__3": "<string>"
+  }
+}

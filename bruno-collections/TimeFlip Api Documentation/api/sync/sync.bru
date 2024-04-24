@@ -1,0 +1,80 @@
+meta {
+  name: sync
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/sync
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: */*
+}
+
+body:json {
+  {
+    "tasks": [
+      {
+        "isBillable": "<boolean>",
+        "isHighPriority": "<boolean>",
+        "isPomodoro": "<boolean>",
+        "isSynced": "<boolean>",
+        "color": "<string>",
+        "currency": "FORINT",
+        "hourlyRate": "<float>",
+        "icon": "<string>",
+        "id": "<long>",
+        "key": "<long>",
+        "localId": "<string>",
+        "name": "<string>",
+        "pomodoroTime": "<integer>",
+        "sideIndex": "<integer>",
+        "synced": "<boolean>",
+        "tag": "<string>"
+      },
+      {
+        "isBillable": "<boolean>",
+        "isHighPriority": "<boolean>",
+        "isPomodoro": "<boolean>",
+        "isSynced": "<boolean>",
+        "color": "<string>",
+        "currency": "DOLLAR",
+        "hourlyRate": "<float>",
+        "icon": "<string>",
+        "id": "<long>",
+        "key": "<long>",
+        "localId": "<string>",
+        "name": "<string>",
+        "pomodoroTime": "<integer>",
+        "sideIndex": "<integer>",
+        "synced": "<boolean>",
+        "tag": "<string>"
+      }
+    ],
+    "timeIntervals": [
+      {
+        "duration": "<integer>",
+        "startedAt": "<string>",
+        "delDate": "<dateTime>",
+        "extId": "<long>",
+        "id": "<long>",
+        "taskId": "<long>",
+        "taskLocalId": "<string>"
+      },
+      {
+        "duration": "<integer>",
+        "startedAt": "<string>",
+        "delDate": "<dateTime>",
+        "extId": "<long>",
+        "id": "<long>",
+        "taskId": "<long>",
+        "taskLocalId": "<string>"
+      }
+    ],
+    "lastSyncedAt": "<dateTime>"
+  }
+}

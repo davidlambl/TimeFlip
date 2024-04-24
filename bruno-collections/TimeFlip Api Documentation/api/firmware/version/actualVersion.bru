@@ -1,0 +1,15 @@
+meta {
+  name: actualVersion
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/firmware/version
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

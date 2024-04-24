@@ -1,0 +1,15 @@
+meta {
+  name: updatePomodoroTime
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/api/tasks/:id/newPomodoroTime/:newPomodoroTime
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

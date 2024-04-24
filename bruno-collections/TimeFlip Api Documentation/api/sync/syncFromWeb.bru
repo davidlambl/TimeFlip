@@ -1,0 +1,15 @@
+meta {
+  name: syncFromWeb
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/sync
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

@@ -1,0 +1,15 @@
+meta {
+  name: updateIcon
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/api/tasks/:id/newIcon/:newIcon
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

@@ -1,0 +1,20 @@
+meta {
+  name: allocateTime
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/api/tasks/allocateTime?authenticated=<boolean>&authorities[0].authority=<string>&beginDate=<string>&endDate=<string>&taskId=<long>&time=<long>
+  body: none
+  auth: none
+}
+
+query {
+  authenticated: <boolean>
+  authorities[0].authority: <string>
+  beginDate: <string>
+  endDate: <string>
+  taskId: <long>
+  time: <long>
+}

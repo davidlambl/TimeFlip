@@ -1,0 +1,75 @@
+meta {
+  name: updateTag
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/api/tasks/:id/newTag
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: */*
+}
+
+body:json {
+  {
+    "billable": "<boolean>",
+    "highPriority": "<boolean>",
+    "pomodoro": "<boolean>",
+    "color": "<string>",
+    "createdAt": {
+      "date": "<integer>",
+      "day": "<integer>",
+      "hours": "<integer>",
+      "minutes": "<integer>",
+      "month": "<integer>",
+      "nanos": "<integer>",
+      "seconds": "<integer>",
+      "time": "<long>",
+      "timezoneOffset": "<integer>",
+      "year": "<integer>"
+    },
+    "currencyId": "<long>",
+    "deletedAt": {
+      "date": "<integer>",
+      "day": "<integer>",
+      "hours": "<integer>",
+      "minutes": "<integer>",
+      "month": "<integer>",
+      "nanos": "<integer>",
+      "seconds": "<integer>",
+      "time": "<long>",
+      "timezoneOffset": "<integer>",
+      "year": "<integer>"
+    },
+    "description": "<string>",
+    "extId": "<string>",
+    "hourlyRate": "<number>",
+    "icon": "<string>",
+    "id": "<long>",
+    "name": "<string>",
+    "ownerId": "<long>",
+    "pomodoroTime": "<integer>",
+    "sideIndex": "<integer>",
+    "tag": "<string>",
+    "updatedAt": {
+      "date": "<integer>",
+      "day": "<integer>",
+      "hours": "<integer>",
+      "minutes": "<integer>",
+      "month": "<integer>",
+      "nanos": "<integer>",
+      "seconds": "<integer>",
+      "time": "<long>",
+      "timezoneOffset": "<integer>",
+      "year": "<integer>"
+    },
+    "isBillable": "<boolean>",
+    "isHighPriority": "<boolean>",
+    "isPomodoro": "<boolean>"
+  }
+}

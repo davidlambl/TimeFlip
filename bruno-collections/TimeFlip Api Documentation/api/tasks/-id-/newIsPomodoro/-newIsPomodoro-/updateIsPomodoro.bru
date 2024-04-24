@@ -1,0 +1,15 @@
+meta {
+  name: updateIsPomodoro
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/api/tasks/:id/newIsPomodoro/:newIsPomodoro
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: */*
+}

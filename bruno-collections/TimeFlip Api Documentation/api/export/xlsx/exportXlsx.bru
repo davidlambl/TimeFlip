@@ -1,0 +1,45 @@
+meta {
+  name: exportXlsx
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/export/xlsx?authenticated=<boolean>&authorities[0].authority=<string>&beginDate=<dateTime>&beginDateStr=<string>&currencyId=<long>&endDate=<dateTime>&endDateStr=<string>&tags=<string>&tags=<string>&taskIds=<long>&taskIds=<long>&timeOrPaymentSorting=<boolean>&userId=<long>
+  body: json
+  auth: none
+}
+
+query {
+  authenticated: <boolean>
+  authorities[0].authority: <string>
+  beginDate: <dateTime>
+  beginDateStr: <string>
+  currencyId: <long>
+  endDate: <dateTime>
+  endDateStr: <string>
+  tags: <string>
+  tags: <string>
+  taskIds: <long>
+  taskIds: <long>
+  timeOrPaymentSorting: <boolean>
+  userId: <long>
+}
+
+headers {
+  Content-Type: application/json
+  Accept: */*
+}
+
+body:json {
+  {
+    "taskIds": [
+      "<long>",
+      "<long>"
+    ],
+    "tags": [
+      "<string>",
+      "<string>"
+    ]
+  }
+}

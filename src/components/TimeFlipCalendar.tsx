@@ -4,6 +4,7 @@ import Calendar from 'react-calendar';
 import EventDetails from './EventDetails';
 import LoginFormModal from './LoginFormModal';
 import './TimeFlipCalendar.css';
+import { AuthTokenManager } from '../services/authService';
 import 'react-calendar/dist/Calendar.css';
 
 type ValuePiece = Date | null;
@@ -17,9 +18,15 @@ const TimeFlipCalendar: React.FC = () => {
     setSelectedDate(value instanceof Date ? value : null);
   };
 
+  const handleOnSubmit = (username: string, password: string) => {
+    AuthTokenManager.setToken(username, password)
+      .then(() => { onClose(); }) 
+      .catch(err => { console.error(err); });
+  };
+
   return (
     <>
-      <LoginFormModal isOpen={isOpen} onClose={onClose} />
+      <LoginFormModal isOpen={isOpen} onSubmit={handleOnSubmit} onClose={onClose} />
       <div className="upper-half">
         <Calendar onChange={handleDateChange} value={selectedDate} />
       </div>

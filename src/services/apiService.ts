@@ -1,7 +1,7 @@
-import { getToken } from './authService';
+import { AuthTokenManager } from './authService';
 
 export const fetchData = async <T>(url: string): Promise<T> => {
-  const token: string | null = await getToken();
+  const token: string | null = AuthTokenManager.getToken();
   if (!token) throw new Error('No token found');
 
   try {

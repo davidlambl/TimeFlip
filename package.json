@@ -13,13 +13,13 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@tanstack/react-query": "^5.29.2",
-    "@tanstack/react-query-devtools": "^5.29.2",
-    "framer-motion": "^11.1.5",
+    "@tanstack/react-query": "^5.32.0",
+    "@tanstack/react-query-devtools": "^5.32.0",
+    "framer-motion": "^11.1.7",
     "react": "^18.2.0",
     "react-calendar": "^4.8.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.23.0"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.28.11",
@@ -34,8 +34,8 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "msw": "^2.2.13",
+    "msw": "^2.2.14",
     "typescript": "^5.4.5",
-    "vite": "^5.2.9"
+    "vite": "^5.2.10"
   }
 }

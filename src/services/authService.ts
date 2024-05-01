@@ -1,10 +1,6 @@
 export const AuthTokenManager = {
-  getToken: (): string => {
-    const token = localStorage.getItem('authToken');
-    if (!token) {
-      throw new Error('No auth token found');
-    }
-    return token;
+  getToken: (): string | null => {
+    return localStorage.getItem('authToken');
   },
 
   setToken: async (username: string, password: string): Promise<void> => {

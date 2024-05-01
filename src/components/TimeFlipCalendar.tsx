@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Button, useDisclosure } from '@chakra-ui/react';
+import { Box, Button, useDisclosure } from '@chakra-ui/react';
+import { AuthTokenManager } from '../services/authService';
 import Calendar from 'react-calendar';
 import EventDetails from './EventDetails';
 import LoginFormModal from './LoginFormModal';
-import './TimeFlipCalendar.css';
-import { AuthTokenManager } from '../services/authService';
 import 'react-calendar/dist/Calendar.css';
 
 type ValuePiece = Date | null;
@@ -20,20 +19,20 @@ const TimeFlipCalendar: React.FC = () => {
 
   const handleOnSubmit = (username: string, password: string) => {
     AuthTokenManager.setToken(username, password)
-      .then(() => { onClose(); }) 
+      .then(() => { onClose(); })
       .catch(err => { console.error(err); });
   };
 
   return (
     <>
       <LoginFormModal isOpen={isOpen} onSubmit={handleOnSubmit} onClose={onClose} />
-      <div className="upper-half">
+      <Box maxWidth="fit-content" marginX="auto" paddingTop="25px">
         <Calendar onChange={handleDateChange} value={selectedDate} />
-      </div>
-      <div className="lower-half">
+      </Box>
+      <Box textAlign="center" p={5}>
         <EventDetails selectedDate={selectedDate} />
-        <Button colorScheme='teal' onClick={onOpen}>Login</Button>
-      </div>
+        <Button colorScheme='blue' onClick={onOpen}>Login</Button>
+      </Box>
     </>
   );
 };

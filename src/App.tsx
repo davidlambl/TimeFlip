@@ -2,7 +2,7 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import TimeFlipCalendar from './components/TimeFlipCalendar';
+import Login from './pages/Login';
 
 const queryClient = new QueryClient();
 
@@ -12,7 +12,7 @@ const App: React.FC = () => {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
-          <Route path="/" element={<TimeFlipCalendar />} />
+          <Route path="/" element={<Login />} />
         </Routes>
       </Router>
       <ReactQueryDevtools initialIsOpen />

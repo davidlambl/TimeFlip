@@ -1,26 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, useDisclosure } from '@chakra-ui/react';
+import TimeFlipCalendar from './TimeFlipCalendar.tsx';
+import LoginFormModal from '../components/LoginFormModal';
 import { AuthTokenManager } from '../services/authService';
-import Calendar from 'react-calendar';
-import EventDetails from './EventDetails';
-import LoginFormModal from './LoginFormModal';
 import 'react-calendar/dist/Calendar.css';
 
-type ValuePiece = Date | null;
-type Value = ValuePiece | [ValuePiece, ValuePiece];
-
-const TimeFlipCalendar: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+const Login: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
     setToken(AuthTokenManager.getToken());
   }, []);
-
-  const handleDateChange = (value: Value) => {
-    setSelectedDate(value instanceof Date ? value : null);
-  };
+  
 
   const handleOnSubmit = (username: string, password: string) => {
     AuthTokenManager.setToken(username, password)
@@ -40,14 +32,11 @@ const TimeFlipCalendar: React.FC = () => {
 
   return (
     <>
-      <LoginFormModal isOpen={isOpen} onSubmit={handleOnSubmit} onClose={onClose} />
-      <Box maxWidth="fit-content" marginX="auto" paddingTop="25px">
-        <Calendar onChange={handleDateChange} value={selectedDate} />
-      </Box>
+      <LoginFormModal isOpen={isOpen} onSubmit={handleOnSubmit} onClose={onClose}/>
       <Box textAlign="center" mt={5}>
         {token ? (
           <>
-            <EventDetails selectedDate={selectedDate} />
+            <TimeFlipCalendar/>
             <Button mt={3} colorScheme='blue' onClick={handleLogout}>Logout</Button>
           </>
         ) : (
@@ -58,4 +47,4 @@ const TimeFlipCalendar: React.FC = () => {
   );
 };
 
-export default TimeFlipCalendar;
+export default Login;

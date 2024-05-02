@@ -14,7 +14,7 @@ const TimeFlipCalendar: React.FC = () => {
   };
     
   return (
-    <Box width="100%" display="flex" justifyContent="center" pt="25px"> 
+    <Box width="100%" display="flex" justifyContent="center"> 
       <Box maxWidth="fit-content">
         <Calendar onChange={handleDateChange} value={selectedDate}/>
         <Box textAlign="center" mt={5}>

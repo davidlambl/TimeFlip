@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Box, Button, FormControl, FormLabel, Input } from '@chakra-ui/react';
 import TimeFlipCalendar from './TimeFlipCalendar.tsx';
 import { AuthTokenManager } from '../services/authService';
-import 'react-calendar/dist/Calendar.css';
 
 const Login: React.FC = () => {
   const [token, setToken] = useState<string | null>(null);
@@ -26,12 +25,12 @@ const Login: React.FC = () => {
   };
 
   return (
-    <Box mt="5%" textAlign="center">
+    <Box mt="2%" textAlign="center">
       {
         token ? (
           <>
             <TimeFlipCalendar />
-            <Button mt={3} colorScheme='blue' onClick={handleLogout}>Logout</Button>
+            <Button mt={4} colorScheme='blue' onClick={handleLogout}>Logout</Button>
           </>
         ) : (
           <Box mx="auto" width="400px" px={5} py={4} borderRadius="lg" bg="gray.50" boxShadow="xl">

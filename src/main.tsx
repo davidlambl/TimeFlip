@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { ChakraProvider } from "@chakra-ui/react"
 import App from './App.tsx';
 import './index.css';
+import './DatePickerStyles.css';
 
 async function startServiceWorkerInDev() {
   if (process.env.NODE_ENV === 'development') {

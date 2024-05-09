@@ -1,9 +1,9 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
-import {useQuery} from '@tanstack/react-query';
-import {Box, Heading, ListItem, Spinner, Text, UnorderedList} from "@chakra-ui/react";
-import {DailyReport, Day} from '../interfaces/timeTrackingModel';
-import {fetchData} from '../services/apiService';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { Box, Heading, ListItem, Spinner, Text, UnorderedList } from "@chakra-ui/react";
+import { DailyReport, Day } from '../interfaces/timeTrackingModel';
+import { fetchData } from '../services/apiService';
 
 interface EventDetailsProps {
   selectedDate?: Date | null;
@@ -26,28 +26,28 @@ const TimeDisplay: React.FC<{ totalTime: number }> = (props) => {
 }
 
 const EventDetails: React.FC<EventDetailsProps> = (props) => {
-  const { date } = useParams<{ date: string }>();
+  const {date} = useParams<{ date: string }>();
   const day: string = props.selectedDate?.toISOString()?.slice(0, 10) ?? date ?? '2024-01-01';
-  const { isLoading, data: fetchedData } = useQuery({
+  const {isLoading, data: fetchedData} = useQuery({
     queryKey: [day],
     queryFn: () => fetchDailyReport(day),
   });
 
   if (isLoading) {
-    return <Spinner color="blue.500" />;
+    return <Spinner color="blue.500"/>;
   }
 
   const dayData = fetchedData?.weeks[0].days.find((d: Day) => d.dateStr === day);
 
   return (
     <Box>
-      <Heading mb={4}>Tasks for {day}</Heading>
+      <Heading size='lg' mb={4}>{day}</Heading>
       {dayData && dayData.tasksInfo.length > 0 ? (
         <UnorderedList styleType={"none"}>
           {dayData.tasksInfo.map((taskInfo, index) => (
             <ListItem key={index}>
               <Heading size="sm">{taskInfo.task.name}</Heading>
-              <TimeDisplay totalTime={taskInfo.totalTime} />
+              <TimeDisplay totalTime={taskInfo.totalTime}/>
             </ListItem>
           ))}
         </UnorderedList>

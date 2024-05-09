@@ -19,10 +19,10 @@ const TimeFlipCalendar: React.FC = () => {
       justifyContent="space-between"
     >
       <Box flex="1" mt={["6", "6", "0", "0"]}>
-        <EventDetails selectedDate={selectedDate}/>
+        <EventDetails selectedDate={selectedDate} />
       </Box>
       <Box flex="1">
-        <ThemedCalendar onChange={handleDateChange} date={selectedDate}/>
+        <ThemedCalendar onChange={handleDateChange} date={selectedDate} />
       </Box>
     </Box>
   );

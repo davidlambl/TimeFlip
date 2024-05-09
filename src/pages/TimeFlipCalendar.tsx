@@ -11,15 +11,21 @@ const TimeFlipCalendar: React.FC = () => {
   };
 
   return (
-    <Box width="100%" display="flex" justifyContent="center">
-      <Box maxWidth="fit-content">
-        <ThemedCalendar onChange={handleDateChange} date={selectedDate} />
-        <Box textAlign="center" mt={3}>
-          <EventDetails selectedDate={selectedDate} />
-        </Box>
+    <Box
+      width={["95%", "80%", "60%", "35%"]}
+      display="flex"
+      flexDirection={["column-reverse", "column-reverse", "row", "row"]}
+      m="auto"
+      justifyContent="space-between"
+    >
+      <Box flex="1" mt={["6", "6", "0", "0"]}>
+        <EventDetails selectedDate={selectedDate}/>
+      </Box>
+      <Box flex="1">
+        <ThemedCalendar onChange={handleDateChange} date={selectedDate}/>
       </Box>
     </Box>
-  )
+  );
 };
 
 export default TimeFlipCalendar;

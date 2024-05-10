@@ -41,7 +41,7 @@ const EventDetails: React.FC<EventDetailsProps> = (props) => {
   const dayData = fetchedData?.weeks[0].days.find((d: Day) => d.dateStr === day);
 
   return (
-    <Box>
+    <Box mt="1">
       <Heading size='lg' mb={4}>{day}</Heading>
       {dayData && dayData.tasksInfo.length > 0 ? (
         <UnorderedList styleType={"none"}>

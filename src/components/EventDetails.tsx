@@ -6,10 +6,11 @@ import { DailyReport, Day } from '../interfaces/timeTrackingModel';
 import { fetchData } from '../services/apiService';
 
 interface EventDetailsProps {
-  selectedDate?: Date | null;
+  selectedDate?: Date;
 }
 
-async function fetchDailyReport(day: string, timeOrPaymentSorting: boolean = true) {
+async function fetchDailyReport(selectedDate: Date, timeOrPaymentSorting: boolean = true) {
+  const day = selectedDate.toISOString()?.slice(0, 10)
   const baseUrl = "https://newapi.timeflip.io/report/daily";
   const url = `${baseUrl}?timeOrPaymentSorting=${timeOrPaymentSorting}&beginDateStr=${day}&endDateStr=${day}`;
   return await fetchData<DailyReport>(url);
@@ -17,38 +18,46 @@ async function fetchDailyReport(day: string, timeOrPaymentSorting: boolean = tru
 
 const TimeDisplay: React.FC<{ totalTime: number }> = (props) => {
   function formatTime(totalSeconds: number) {
-    const minutes = Math.floor(totalSeconds / 60);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds - (hours * 3600)) / 60);
     const seconds = totalSeconds % 60;
-    const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
-    return `${minutes}:${formattedSeconds}`;
+    const formattedHours = hours < 10 ? `0${hours}` : hours.toString();
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes.toString();
+    const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds.toString();
+
+    if (hours > 0) {
+      return `${formattedHours}:${formattedMinutes} hours`;
+    } else if (minutes > 0) {
+      return `${formattedMinutes}:${formattedSeconds} minutes`;
+    } else {
+      return `00:${formattedSeconds} seconds`;
+    }
   }
 
-  return <Text>{formatTime(props.totalTime)} minutes</Text>;
+  return <Text>{formatTime(props.totalTime)}</Text>;
 }
 
 const EventDetails: React.FC<EventDetailsProps> = (props) => {
-  const { date } = useParams<{ date: string }>();
-  const day: string = props.selectedDate?.toISOString()?.slice(0, 10) ?? date ?? '2024-01-01';
-  const { isLoading, data: fetchedData } = useQuery({
-    queryKey: [day],
-    queryFn: () => fetchDailyReport(day),
+  let selectedDate: Date = props.selectedDate ?? new Date();
+  selectedDate = new Date(selectedDate.toLocaleDateString());
+  const {isLoading, data: fetchedData, isError, error} = useQuery({
+    queryKey: [selectedDate.toString()],
+    queryFn: () => fetchDailyReport(selectedDate),
+    staleTime: Infinity
   });
-
-  if (isLoading) {
-    return <Spinner color="blue.500" />;
-  }
-
-  const dayData = fetchedData?.weeks[0].days.find((d: Day) => d.dateStr === day);
+  const dayData = fetchedData?.weeks[0]?.days?.find((d: Day) => d.dateStr === selectedDate.toISOString()?.slice(0, 10));
+  if (isLoading) return <Spinner color="blue.500"/>;
+  if (isError) return <div>Error: {error.message}</div>;
 
   return (
     <Box mt="1">
-      <Heading size='lg' mb={4}>{day}</Heading>
+      <Heading size='lg' mb={4}>{selectedDate.toISOString()?.slice(0, 10)}</Heading>
       {dayData && dayData.tasksInfo.length > 0 ? (
         <UnorderedList styleType={"none"}>
-          {dayData.tasksInfo.map((taskInfo, index) => (
-            <ListItem key={index}>
+          {dayData.tasksInfo.map((taskInfo) => (
+            <ListItem key={taskInfo.task.id}>
               <Heading size="sm">{taskInfo.task.name}</Heading>
-              <TimeDisplay totalTime={taskInfo.totalTime} />
+              <TimeDisplay totalTime={taskInfo.totalTime}/>
             </ListItem>
           ))}
         </UnorderedList>

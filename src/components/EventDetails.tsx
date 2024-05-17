@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Box, Heading, ListItem, Spinner, Text, UnorderedList } from "@chakra-ui/react";
 import { DailyReport, Day } from '../interfaces/timeTrackingModel';
@@ -40,13 +39,13 @@ const TimeDisplay: React.FC<{ totalTime: number }> = (props) => {
 const EventDetails: React.FC<EventDetailsProps> = (props) => {
   let selectedDate: Date = props.selectedDate ?? new Date();
   selectedDate = new Date(selectedDate.toLocaleDateString());
-  const {isLoading, data: fetchedData, isError, error} = useQuery({
+  const { isLoading, data: fetchedData, isError, error } = useQuery({
     queryKey: [selectedDate.toString()],
     queryFn: () => fetchDailyReport(selectedDate),
     staleTime: Infinity
   });
   const dayData = fetchedData?.weeks[0]?.days?.find((d: Day) => d.dateStr === selectedDate.toISOString()?.slice(0, 10));
-  if (isLoading) return <Spinner color="blue.500"/>;
+  if (isLoading) return <Spinner color="blue.500" />;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
@@ -57,7 +56,7 @@ const EventDetails: React.FC<EventDetailsProps> = (props) => {
           {dayData.tasksInfo.map((taskInfo) => (
             <ListItem key={taskInfo.task.id}>
               <Heading size="sm">{taskInfo.task.name}</Heading>
-              <TimeDisplay totalTime={taskInfo.totalTime}/>
+              <TimeDisplay totalTime={taskInfo.totalTime} />
             </ListItem>
           ))}
         </UnorderedList>

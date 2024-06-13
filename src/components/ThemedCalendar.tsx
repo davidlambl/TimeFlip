@@ -2,10 +2,10 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import { Box } from '@chakra-ui/react';
 
-type ThemedCalendarProps = {
+interface ThemedCalendarProps {
   onChange: (date: Date) => void;
   date: Date;
-};
+}
 
 const ThemedCalendar: React.FC<ThemedCalendarProps> = ({ onChange, date }) => {
   return (

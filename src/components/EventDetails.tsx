@@ -9,7 +9,7 @@ interface EventDetailsProps {
   selectedDate?: Date;
 }
 
-async function fetchDailyReport(selectedDate: Date, timeOrPaymentSorting: boolean = true) {
+async function fetchDailyReport(selectedDate: Date, timeOrPaymentSorting = true) {
   const day = selectedDate.toISOString()?.slice(0, 10)
   const baseUrl = "https://newapi.timeflip.io/report/daily";
   const url = `${baseUrl}?timeOrPaymentSorting=${timeOrPaymentSorting}&beginDateStr=${day}&endDateStr=${day}`;

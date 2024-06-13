@@ -1,30 +1,24 @@
-import React, { useState } from "react";
-import { Box } from "@chakra-ui/react";
-import EventDetails from "../components/EventDetails.tsx";
+import React from "react";
+import { Flex } from "@chakra-ui/react";
 import ThemedCalendar from "../components/ThemedCalendar.tsx";
+import BigCalendar from "../components/BigCalendar.tsx";
 
-const TimeFlipCalendar: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+interface TimeFlipCalendarProps {
+  isToggled: boolean;
+}
 
-  const handleDateChange = (date: Date) => {
-    setSelectedDate(date);
-  };
-
+const TimeFlipCalendar: React.FC<TimeFlipCalendarProps> = ({ isToggled }) => {
   return (
-    <Box
-      width={["95%", "80%", "60%", "35%"]}
-      display="flex"
-      flexDirection={["column-reverse", "column-reverse", "row", "row"]}
-      m="auto"
-      justifyContent="space-between"
-    >
-      <Box flex="1" mt={["6", "6", "0", "0"]}>
-        <EventDetails selectedDate={selectedDate} />
-      </Box>
-      <Box flex="1">
-        <ThemedCalendar onChange={handleDateChange} date={selectedDate} />
-      </Box>
-    </Box>
+    <Flex flexDirection="column" width="100%" height="100vh">
+
+      <Flex width="100%" flexGrow={1}>
+        {isToggled ?
+          <BigCalendar />
+          :
+          <ThemedCalendar />
+        }
+      </Flex>
+    </Flex>
   );
 };
 

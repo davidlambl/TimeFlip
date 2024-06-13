@@ -1,11 +1,23 @@
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react';
-import React, {useState} from "react";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay
+} from '@chakra-ui/react';
+import React, { useState } from "react";
 
-type ModalProps = {
-    isOpen: boolean;
-    onClose: () => void;
-    onSubmit: (username: string, password: string) => void;
-};
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (username: string, password: string) => void;
+}
 
 const LoginFormModal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
   const [username, setUsername] = useState("");
@@ -17,10 +29,10 @@ const LoginFormModal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => 
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay/>
+      <ModalOverlay />
       <ModalContent>
         <ModalHeader>Login</ModalHeader>
-        <ModalCloseButton/>
+        <ModalCloseButton />
         <ModalBody pb={6}>
           <FormControl>
             <FormLabel>Username</FormLabel>
@@ -33,7 +45,7 @@ const LoginFormModal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => 
         </ModalBody>
         <ModalFooter>
           <Button colorScheme='blue' mr={3} onClick={save}>
-                Save
+            Save
           </Button>
           <Button onClick={onClose}>Cancel</Button>
         </ModalFooter>
